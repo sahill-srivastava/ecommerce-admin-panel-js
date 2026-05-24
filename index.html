@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- sidebar -->
+    <aside class="sidebar_container">
+
+        <div class="close_button_container">
+            <div class="close_button"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <h1>SS STORE</h1>
+        <ul class="navigation_list">
+            <li id="products" class="icon_hover">
+                <lord-icon src="https://cdn.lordicon.com/qfijwmqj.json" colors="primary:#ffffff,secondary:#ffffff">
+                </lord-icon>
+                Products
+            </li>
+            <li id="orders" class="icon_hover">
+                <lord-icon src="https://cdn.lordicon.com/uisoczqi.json" colors="primary:#ffffff,secondary:#ffffff">
+                </lord-icon>
+                Orders
+            </li>
+            <li id="users" class="icon_hover">
+                <lord-icon src="https://cdn.lordicon.com/fqbvgezn.json" colors="primary:#ffffff,secondary:#ffffff">
+                </lord-icon>
+                Users
+            </li>
+            <li id="settings" class="icon_hover">
+                <lord-icon src="https://cdn.lordicon.com/fwkrbvja.json" colors="primary:#ffffff,secondary:#ffffff">
+                </lord-icon>
+                Settings
+            </li>
+        </ul>
+    </aside>
+
+
+    <main>
+
+        <!-- navbar -->
+        <header>
+            <nav class="navbar">
+                <div class="navbar_left_box">
+                    <div class="drawer"><i class="fa-solid fa-table-columns"></i></div>
+                    <p>Welcome back, Admin</p>
+                </div>
+                <div class="navbar_right_box">
+                    <img class="avatar_img" src="assets/user-profile-dark.svg" alt="avatar">
+                </div>
+            </nav>
+        </header>
+
+        <!-- content -->
+        <section class="main_content">
+
+            <!-- products-content -->
+            <div class="app_content">
+
+                <!-- <button id="add-product" class="add_button">Add Product</button>
+
+                <div class="parent_holder">
+
+                    <div class="parent_container">
+
+                        <div class="row row_five row_header">
+                            <div>Image</div>
+                            <div>Name</div>
+                            <div>Price (Rs)</div>
+                            <div>Stock</div>
+                            <div>Actions</div>
+                        </div>
+
+                        <div class="row_parent product_row_parent">
+
+                            <div class="row row_five">
+                                <div class="image_box boxes">
+                                    <img src="assets/shopping.webp" alt="">
+                                </div>
+                                <div class="name_box boxes">Shoes</div>
+                                <div class="price_box boxes">1200</div>
+                                <div class="stock_box boxes">25</div>
+                                <div class="action_box boxes">
+                                    <lord-icon src="https://cdn.lordicon.com/exymduqj.json" trigger="loop"
+                                        colors="primary:#109121,secondary:#109121">
+                                    </lord-icon>
+                                    <lord-icon src="https://cdn.lordicon.com/jzinekkv.json" trigger="hover"
+                                        colors="primary:#e83a30,secondary:#e83a30">
+                                    </lord-icon>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div> -->
+
+
+            </div>
+
+
+
+            <!-- order-content -->
+            <!-- <div class="app_content">
+
+                <div class="parent_holder">
+
+                    <div class="parent_container">
+
+                        <div class="row row_six row_header">
+                            <div>OrderID</div>
+                            <div>Customer</div>
+                            <div>Date</div>
+                            <div>Total (Rs)</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+
+                        <div class="row_parent order_row_parent">
+
+                            <div class="row row_six">
+                                <div class="order_id_box boxes">#1011</div>
+                                <div class="cutomer_box boxes">Rahul</div>
+                                <div class="date_box boxes">Jan-2026</div>
+                                <div class="total_box boxes">2400</div>
+                                <div class="status_box boxes">Paid</div>
+                                <div class="view_box boxes">
+                                    <button class="order_view_button view_btn">View</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div> -->
+
+
+            <!-- users-content -->
+            <!-- <div class="app_content">
+
+                <div class="parent_holder">
+
+                    <div class="parent_container">
+
+                        <div class="row row_six row_header">
+                            <div>User</div>
+                            <div>Email</div>
+                            <div>Orders</div>
+                            <div>Joined</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+
+                        <div class="row_parent order_row_parent">
+
+                            <div class="row row_six">
+                                <div class="user_box boxes">Rahul</div>
+                                <div class="email_box boxes">rahul@gmail.com</div>
+                                <div class="orders_box boxes">12</div>
+                                <div class="joined_box boxes">Jan 2026</div>
+                                <div class="user_status_box boxes">Active</div>
+                                <div class="user_view_box boxes">
+                                    <button class="user_view_button view_btn">View</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div> -->
+
+            <!-- settings-content -->
+            <!-- <div class="form_app_content">
+
+                <h2>Admin Profile</h2>
+
+                <form id="form">
+
+
+                        <div class="form_group">
+                            <label for="image">Choose Profile Photo:</label>
+                            <input type="file" id="image">
+                        </div>
+
+
+                        <div class="form_group">
+                            <label for="name">Admin Name:</label>
+                            <input type="text" id="name">
+                        </div>
+
+                        <div class="form_group">
+                            <label for="image">Admin Email:</label>
+                            <input type="email" id="email">
+                        </div>
+
+                        <div class="form_group">
+                            <label for="image">Admin Password:</label>
+                            <input type="password" id="password">
+                        </div>
+
+
+
+                    <button type="submit">Save Details</button>
+
+                </form>
+
+
+            </div> -->
+
+        </section>
+
+
+    </main>
+
+    <!--------------- Modals ---------------------->
+
+    <div class="modal_overlay_container">
+
+        <div class="modal_parent_container">
+
+            <div class="modal_close_button_container">
+                <div class="modal_close_button"><i class="fa-solid fa-xmark"></i></div>
+            </div>
+
+            <div class="modal_content_box">
+                <h2>Edit Product</h2>
+                <form id="edit-form">
+
+                    <div class="form_group">
+                        <label for="edit-image">Choose Image</label>
+                        <div class="preview_image_box">
+                            <img src="https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp"
+                                alt="preview">
+                            <input id="edit-image" type="file" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-title">Title</label>
+                        <input id="edit-title" type="text">
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-price">Price</label>
+                        <input id="edit-price" type="number" min="0">
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-stock">Stock</label>
+                        <input id="edit-stock" type="number" min="0">
+                    </div>
+
+                    <div class="edit_form_buttons">
+                        <button type="submit">Update Details</button>
+                        <button type="submit">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+</body>
+
+</html>
