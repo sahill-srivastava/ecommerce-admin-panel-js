@@ -246,12 +246,49 @@
                 <div class="modal_close_button"><i class="fa-solid fa-xmark"></i></div>
             </div>
 
-            <div class="modal_content_box">
+             <!-- add form -->
+            <div class="modal_add_content_box">
+                <h2>Add Product</h2>
+                <form id="add-form">
+
+                    <div class="form_group">
+                        <label for="add-image">Choose Image:</label>
+                        <div class="preview_image_box">
+                            <!-- <img src="https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp"
+                                alt="preview"> -->
+                            <input id="add-image" name="image" type="file" accept="image/*" required>
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="add-title">Title:</label>
+                        <input id="add-title" name="title" type="text" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="add-price">Price:</label>
+                        <input id="add-price" name="price" type="number" min="0" required>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="add-stock">Stock:</label>
+                        <input id="add-stock" name="stock" type="number" min="0" required>
+                    </div>
+
+                    <div class="add_form_buttons">
+                        <button id="submit-button-add" class="submit" type="submit">Add</button>
+                        <button id="cancel-button-add" class="cancel" type="button">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- edit form -->
+            <div class="modal_edit_content_box">
                 <h2>Edit Product</h2>
                 <form id="edit-form">
 
                     <div class="form_group">
-                        <label for="edit-image">Choose Image</label>
+                        <label for="edit-image">Choose Image:</label>
                         <div class="preview_image_box">
                             <img src="https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp"
                                 alt="preview">
@@ -260,26 +297,28 @@
                     </div>
 
                     <div class="form_group">
-                        <label for="edit-title">Title</label>
+                        <label for="edit-title">Title:</label>
                         <input id="edit-title" type="text">
                     </div>
 
                     <div class="form_group">
-                        <label for="edit-price">Price</label>
+                        <label for="edit-price">Price:</label>
                         <input id="edit-price" type="number" min="0">
                     </div>
 
                     <div class="form_group">
-                        <label for="edit-stock">Stock</label>
+                        <label for="edit-stock">Stock:</label>
                         <input id="edit-stock" type="number" min="0">
                     </div>
 
                     <div class="edit_form_buttons">
-                        <button type="submit">Update Details</button>
-                        <button type="submit">Cancel</button>
+                        <button id="submit-button-edit" class="submit" type="submit">Update Details</button>
+                        <button id="cancel-button-edit" class="cancel">Cancel</button>
                     </div>
                 </form>
             </div>
+
+
         </div>
     </div>
 
@@ -287,3 +326,5 @@
 </body>
 
 </html>
+
+

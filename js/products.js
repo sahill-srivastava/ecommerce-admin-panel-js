@@ -11,38 +11,13 @@ import {
     handleIconHover
 } from "./helpers.js";
 
-async function getProducts() {
-
-    try {
-
-        const res = await fetch("js/utils/rawProductsData.json");
-
-        // console.log(res)
-
-        const data = await res.json();
-
-        // console.log(data)
-
-        const { products } = data;
-
-        // console.log(products)
-
-        return {
-            success: true,
-            products,
-            error: null,
-            errorMsg: "Products fetched successfully"
-        }
-
-    } catch (err) {
-        return {
-            success: false,
-            products: [],
-            error: err,
-            errorMsg: "Products Not Found"
-        }
-    }
-}
+// Modals
+import {
+    modalOverlay,
+    addModalBox,
+    editModalBox,
+    addForm
+} from "./refs.js";
 
 
 /*----------------States-----------------*/
@@ -171,7 +146,8 @@ function renderProducts(products) {
 
 
 function addProduct(products) {
-    console.log("add products: ", products)
+    // console.log("add products: ", products)
+    modalOverlay.classList.add("active")
 }
 
 function editProduct(id, products) {
@@ -223,10 +199,93 @@ function handleEvents(e) {
 }
 
 
+function validateFormData(data) {
+    const formData = Object.fromEntries(data.entries());
+
+    const {
+        image,
+        title,
+        price,
+        stock,
+    } = formData;
+
+    console.log(image)
+    console.log(title)
+    // console.log(price)
+    // console.log(stock)
+
+    //validate image
+    const allowedImages = [
+        "image/jpg",
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+    ]
+
+    if (!allowedImages.includes(image.type)) {
+        alert("Invalid image");
+        return;
+    }
+
+    if (image.size > (2 * 1024 * 1024)) return
+
+    //validate title
+    const name = title.trim();
+    console.log(name)
+
+
+}
+
 
 
 /*----------------Data functions-----------------*/
 
+function handleAddProductForm(e) {
+    e.preventDefault();
+
+    // console.log("add products: ", products)
+    // console.dir(e.target)
+
+    const data = new FormData(e.target);
+
+    validateFormData(data)
+
+
+
+}
+
+async function getProducts() {
+
+    try {
+
+        const res = await fetch("js/utils/rawProductsData.json");
+
+        // console.log(res)
+
+        const data = await res.json();
+
+        // console.log(data)
+
+        const { products } = data;
+
+        // console.log(products)
+
+        return {
+            success: true,
+            products,
+            error: null,
+            errorMsg: "Products fetched successfully"
+        }
+
+    } catch (err) {
+        return {
+            success: false,
+            products: [],
+            error: err,
+            errorMsg: "Products Not Found"
+        }
+    }
+}
 
 
 export async function handleProducts() {
@@ -256,6 +315,11 @@ export async function handleProducts() {
 }
 
 
+
+
+
 /*----------------Data functions-----------------*/
 
 appContent.addEventListener("click", handleEvents)
+
+addForm.addEventListener("submit", handleAddProductForm);

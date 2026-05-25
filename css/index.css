@@ -99,7 +99,7 @@ lord-icon {
     }
 
     /* show drawer sidebar */
-    .sidebar_show{
+    .sidebar_show {
         left: 0;
     }
 
@@ -378,14 +378,14 @@ form {
     padding-inline: 0;
 }
 
-.form_group input {
+#form .form_group input {
     padding-block: 10px;
     padding-inline: 20px;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-form button {
+#form button {
     margin-top: 20px;
     padding: 10px 20px;
     border: none;
@@ -395,7 +395,7 @@ form button {
     background: var(--accent-color);
 }
 
-form button:hover {
+#form button:hover {
     background: rgba(2, 61, 138, 0.9);
 }
 
@@ -428,6 +428,10 @@ form button:hover {
 
 /* Modals styling */
 
+.active {
+    display: flex !important;
+}
+
 .modal_overlay_container {
     /* display: none; */
     display: flex;
@@ -445,7 +449,7 @@ form button:hover {
 .modal_parent_container {
     width: fit-content;
     padding: 40px 20px;
-    border-radius: 30px;
+    border-radius: 10px;
     background: var(--bg-color);
     position: relative;
 }
@@ -461,7 +465,106 @@ form button:hover {
     cursor: pointer;
 }
 
-.modal_content_box h2 {
+/* add styling */
+.modal_add_content_box {
+    /* display: none; */
+}
+
+.modal_add_content_box h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+
+#add-form {
+    max-width: 100%;
+    padding: 0;
+}
+
+#add-form .form_group {
+    align-items: center;
+    grid-template-columns: 30% 1fr;
+}
+
+
+#add-form .form_group input {
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.preview_image_box {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.preview_image_box img {
+    width: 50px;
+    object-fit: contain;
+}
+
+#add-image {
+    width: 100%;
+    border: none !important;
+    padding: 0;
+}
+
+.add_form_buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.add_form_buttons button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    outline: 1px solid var(--accent-color);
+    cursor: pointer;
+}
+
+.add_form_buttons button:active {
+    transform: scale(98%);
+}
+
+.add_form_buttons .submit {
+    background: var(--accent-color);
+}
+
+.add_form_buttons .cancel {
+    color: var(--primary-color);
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 490px) {
+
+    .modal_parent_container {
+        margin-inline: 10px;
+    }
+
+    #add-form .form_group {
+        grid-template-columns: 40% 1fr;
+        gap: 0;
+    }
+
+    #add-form .form_group input {
+        white-space: break-spaces;
+    }
+}
+
+/* edit styling */
+.modal_edit_content_box {
+    display: none;
+}
+
+.modal_edit_content_box h2 {
     text-align: center;
     margin-bottom: 40px;
 }
@@ -472,9 +575,21 @@ form button:hover {
     padding: 0;
 }
 
-.preview_image_box{
+#edit-form .form_group {
+    align-items: center;
+    grid-template-columns: 30% 1fr;
+}
+
+#edit-form .form_group input {
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.preview_image_box {
     display: flex;
-    gap: 5px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -485,6 +600,54 @@ form button:hover {
 
 #edit-image {
     width: 100%;
-    border: none;
+    border: none !important;
+    padding: 0;
 }
 
+.edit_form_buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+}
+
+.edit_form_buttons button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    outline: 1px solid var(--accent-color);
+    cursor: pointer;
+}
+
+.edit_form_buttons button:active {
+    transform: scale(98%);
+}
+
+.edit_form_buttons .submit {
+    background: var(--accent-color);
+}
+
+.edit_form_buttons .cancel {
+    color: var(--primary-color);
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 490px) {
+
+    .modal_parent_container {
+        margin-inline: 10px;
+    }
+
+    #edit-form .form_group {
+        grid-template-columns: 40% 1fr;
+        gap: 0;
+    }
+
+    #edit-form .form_group input {
+        white-space: break-spaces;
+    }
+}
