@@ -14,9 +14,10 @@ import {
 // Modals
 import {
     modalOverlay,
-    addModalBox,
-    editModalBox,
-    addForm
+    inputAddImg,
+    imagePrevAdd,
+    addForm,
+    editForm
 } from "./refs.js";
 
 
@@ -255,10 +256,25 @@ function validateFormData(data) {
 
 /*----------------Data functions-----------------*/
 
+function handleAddPreview() {
+
+    console.dir(inputAddImg)
+    const file = inputAddImg.files[0];
+
+    console.log(file)
+
+    const localURL = URL.createObjectURL(file);
+
+    imagePrevAdd.src = localURL;
+    imagePrevAdd.hidden = false;
+
+
+}
+
 function handleAddProductForm(e) {
     e.preventDefault();
 
-     modalOverlay.classList.add("active")
+    modalOverlay.classList.add("active")
 
     // console.log("add products: ", products)
     // console.log(e.target)
@@ -271,14 +287,15 @@ function handleAddProductForm(e) {
 
     products.unshift(data);
 
-    // console.log("final pro: ", products)
 
+    // console.log("final pro: ", products)
 
     localStorage.setItem("items", JSON.stringify(products));
 
     renderProducts(products)
 
     // reset form
+    imagePrevAdd.hidden = true;
     addForm.reset();
 
     //adding succes msg
@@ -286,6 +303,7 @@ function handleAddProductForm(e) {
     p.classList.add("success_msg")
     p.textContent = "Product added successfully...";
     addForm.append(p)
+
     setTimeout(() => {
         p.remove();
         modalOverlay.classList.remove("active")
@@ -361,4 +379,21 @@ export async function handleProducts() {
 
 appContent.addEventListener("click", handleEvents)
 
+//close modal
+modalOverlay.addEventListener("click", (e) => {
+
+    const closeTarget = e.target.closest(
+        ".modal_close_button, #cancel-button-add, #cancel-button-edit"
+    );
+
+    if (closeTarget) {
+        modalOverlay.classList.remove("active");
+        imagePrevAdd.hidden = true;
+        addForm.reset();
+    }
+})
+
+// add product events
 addForm.addEventListener("submit", handleAddProductForm);
+
+inputAddImg.addEventListener("change", handleAddPreview)
