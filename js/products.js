@@ -202,15 +202,15 @@ function handleEvents(e) {
 function validateFormData(data) {
     const formData = Object.fromEntries(data.entries());
 
-    const {
+    let {
         image,
         title,
         price,
         stock,
     } = formData;
 
-    console.log(image)
-    console.log(title)
+    // console.log(image)
+    // console.log(title)
     // console.log(price)
     // console.log(stock)
 
@@ -227,12 +227,27 @@ function validateFormData(data) {
         return;
     }
 
-    if (image.size > (2 * 1024 * 1024)) return
+    if (image.size > (3 * 1024 * 1024)) return
+
+    const thumbnail = URL.createObjectURL(image)
+    // console.log("lco: ", thumbnail)
 
     //validate title
-    const name = title.trim();
-    console.log(name)
+    title = title.trim();
 
+    // normalise price and stock
+    price = +(price);
+    stock = +(stock);
+
+    const id = Date.now();
+
+    return {
+        id,
+        thumbnail,
+        title,
+        price,
+        stock
+    }
 
 }
 
@@ -243,14 +258,38 @@ function validateFormData(data) {
 function handleAddProductForm(e) {
     e.preventDefault();
 
+     modalOverlay.classList.add("active")
+
     // console.log("add products: ", products)
-    // console.dir(e.target)
+    // console.log(e.target)
 
-    const data = new FormData(e.target);
+    let data = new FormData(e.target);
 
-    validateFormData(data)
+    data = validateFormData(data)
+
+    // console.log("fresh data: ", data);
+
+    products.unshift(data);
+
+    // console.log("final pro: ", products)
 
 
+    localStorage.setItem("items", JSON.stringify(products));
+
+    renderProducts(products)
+
+    // reset form
+    addForm.reset();
+
+    //adding succes msg
+    const p = document.createElement("p")
+    p.classList.add("success_msg")
+    p.textContent = "Product added successfully...";
+    addForm.append(p)
+    setTimeout(() => {
+        p.remove();
+        modalOverlay.classList.remove("active")
+    }, 2000)
 
 }
 

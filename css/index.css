@@ -433,8 +433,8 @@ form {
 }
 
 .modal_overlay_container {
-    /* display: none; */
-    display: flex;
+    display: none;
+    /* display: flex; */
     position: fixed;
     top: 0;
     left: 0;
@@ -650,4 +650,10 @@ form {
     #edit-form .form_group input {
         white-space: break-spaces;
     }
+}
+
+.success_msg {
+    color: green;
+    font-size: 14px;
+    font-style: italic;
 }
