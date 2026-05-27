@@ -465,9 +465,13 @@ form {
     cursor: pointer;
 }
 
+.show_modal {
+    display: block !important;
+}
+
 /* add styling */
 .modal_add_content_box {
-    /* display: none; */
+    display: none;
 }
 
 .modal_add_content_box h2 {

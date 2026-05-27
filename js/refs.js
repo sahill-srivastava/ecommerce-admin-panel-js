@@ -7,6 +7,8 @@ export const addProductBtn = document.getElementById("add-product");
 
 // Modals
 export const modalOverlay = document.querySelector(".modal_overlay_container")
+export const addFormContent = modalOverlay.querySelector(".modal_add_content_box");
+export const editFormContent = modalOverlay.querySelector(".modal_edit_content_box");
 export const inputAddImg = document.getElementById("add-image");
 export const imagePrevAdd = document.getElementById("image-preview");
 

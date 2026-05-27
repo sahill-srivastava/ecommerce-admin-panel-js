@@ -17,7 +17,9 @@ import {
     inputAddImg,
     imagePrevAdd,
     addForm,
-    editForm
+    addFormContent,
+    editForm,
+    editFormContent
 } from "./refs.js";
 
 
@@ -149,10 +151,33 @@ function renderProducts(products) {
 function addProduct(products) {
     // console.log("add products: ", products)
     modalOverlay.classList.add("active")
+    addFormContent.classList.add("show_modal")
 }
 
 function editProduct(id, products) {
-    console.log("edit prod: ", id, products)
+
+    // console.log("edit prod: ", id, products)
+    modalOverlay.classList.add("active")
+    editFormContent.classList.add("show_modal")
+
+    const imgPrev = editForm.querySelector("#edit-image-preview");
+
+    // show existing elements
+
+    const target = products.find(item => item.id === id);
+
+    const {
+        thumbnail,
+        title,
+        price,
+        stock
+    } = target;
+
+    imgPrev.src = thumbnail
+    console.dir(editForm[0])
+    editForm[1].value = title
+    editForm[2].value = price
+    editForm[3].value = stock
 }
 
 function deleteProduct(id) {
@@ -258,10 +283,10 @@ function validateFormData(data) {
 
 function handleAddPreview() {
 
-    console.dir(inputAddImg)
+    // console.dir(inputAddImg)
     const file = inputAddImg.files[0];
 
-    console.log(file)
+    // console.log(file)
 
     const localURL = URL.createObjectURL(file);
 
@@ -309,6 +334,14 @@ function handleAddProductForm(e) {
         modalOverlay.classList.remove("active")
     }, 2000)
 
+}
+
+function handleEditProductForm(e) {
+    e.preventDefault();
+
+    let data =  new FormData(e.target)
+
+    console.log(data)
 }
 
 async function getProducts() {
@@ -379,7 +412,7 @@ export async function handleProducts() {
 
 appContent.addEventListener("click", handleEvents)
 
-//close modal
+//reset settings
 modalOverlay.addEventListener("click", (e) => {
 
     const closeTarget = e.target.closest(
@@ -388,6 +421,8 @@ modalOverlay.addEventListener("click", (e) => {
 
     if (closeTarget) {
         modalOverlay.classList.remove("active");
+        addFormContent.classList.remove("show_modal")
+        editFormContent.classList.remove("show_modal")
         imagePrevAdd.hidden = true;
         addForm.reset();
     }
@@ -397,3 +432,6 @@ modalOverlay.addEventListener("click", (e) => {
 addForm.addEventListener("submit", handleAddProductForm);
 
 inputAddImg.addEventListener("change", handleAddPreview)
+
+//edit product listner
+editForm.addEventListener("submit", handleEditProductForm)
