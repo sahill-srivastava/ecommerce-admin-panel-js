@@ -16,6 +16,8 @@ import {
     modalOverlay,
     inputAddImg,
     imagePrevAdd,
+    inputEditImg,
+    imagePrevEdit,
     addForm,
     addFormContent,
     editForm,
@@ -26,6 +28,8 @@ import {
 /*----------------States-----------------*/
 
 let products = [];
+
+let currentEditingData = null;
 
 
 /*----------------Helpers functions-----------------*/
@@ -166,6 +170,9 @@ function editProduct(id, products) {
 
     const target = products.find(item => item.id === id);
 
+    //pushing data inot currentData
+    currentEditingData = {...target};
+
     const {
         thumbnail,
         title,
@@ -174,7 +181,6 @@ function editProduct(id, products) {
     } = target;
 
     imgPrev.src = thumbnail
-    console.dir(editForm[0])
     editForm[1].value = title
     editForm[2].value = price
     editForm[3].value = stock
@@ -336,12 +342,103 @@ function handleAddProductForm(e) {
 
 }
 
+function handleEditPreview() {
+
+    // console.dir(inputAddImg)
+    const file = inputEditImg.files[0];
+
+    // console.log(file)
+
+    const localURL = URL.createObjectURL(file);
+
+    imagePrevEdit.src = localURL;
+    imagePrevEdit.hidden = false;
+
+
+}
+
+function validateProductUpdation(formData) {
+    console.log("orginal: ", currentEditingData);
+    console.log("formData :", formData);
+
+    let updatedData = {};
+
+    /****originalData****/
+    const {
+        title: origTitle,
+        price: origPrice,
+        stock: origStock
+    } = currentEditingData;
+
+    updatedData = {...currentEditingData}
+
+    /****formData****/
+    let {
+        image,
+        title,
+        price,
+        stock
+    } = formData;
+
+    const imageSize = image.size;
+    price = +(price)
+    stock = +(stock)
+
+
+    // console.log(origTitle + " : " + title)
+    // console.log(origPrice + " : " + price)
+    // console.log(origStock + " : " + stock)
+
+    // validate image
+    console.log(imageSize)
+    if(imageSize > 0) {
+        console.log("image updated")
+
+        // console.log(image)
+        const thumbnail =  URL.createObjectURL(image);
+        console.log(thumbnail)
+
+        console.log("before: ", updatedData)
+
+        console.log(updatedData[thumbnail])
+        console.log(updatedData.thumbnail)
+        updatedData.thumbnail = thumbnail;
+
+        console.log("after: ", updatedData)
+    }
+ console.log(imageSize)
+    
+
+    // compare title
+    if(origTitle !== title) {
+        console.log("title updated")
+    }
+
+    //compare price
+    if(origPrice !== price) {
+        console.log("price updated")
+    }
+
+    //compare price
+    if(origStock !== stock){
+         console.log("stock updated")
+    }
+
+
+}
+
 function handleEditProductForm(e) {
     e.preventDefault();
 
+
     let data =  new FormData(e.target)
 
-    console.log(data)
+    const formData = Object.fromEntries(data.entries());
+
+    // console.log(formData)
+
+    //validate data updated or not
+    validateProductUpdation(formData);
 }
 
 async function getProducts() {
@@ -424,14 +521,16 @@ modalOverlay.addEventListener("click", (e) => {
         addFormContent.classList.remove("show_modal")
         editFormContent.classList.remove("show_modal")
         imagePrevAdd.hidden = true;
+        imagePrevEdit.hidden = true;
         addForm.reset();
     }
 })
 
 // add product events
 addForm.addEventListener("submit", handleAddProductForm);
-
 inputAddImg.addEventListener("change", handleAddPreview)
+
 
 //edit product listner
 editForm.addEventListener("submit", handleEditProductForm)
+inputEditImg.addEventListener("change", handleEditPreview)

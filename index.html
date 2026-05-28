@@ -267,7 +267,7 @@
 
                     <div class="form_group">
                         <label for="add-price">Price:</label>
-                        <input id="add-price" name="price" type="number" min="0" required>
+                        <input id="add-price" name="price" type="number" min="0" step="any" required>
                     </div>
 
                     <div class="form_group">
@@ -292,23 +292,23 @@
                         <div class="preview_image_box">
                             <img id="edit-image-preview" src="#"
                                 alt="preview">
-                            <input id="edit-image" type="file" accept="image/*">
+                            <input id="edit-image" name="image" type="file" accept="image/*">
                         </div>
                     </div>
 
                     <div class="form_group">
                         <label for="edit-title">Title:</label>
-                        <input id="edit-title" type="text">
+                        <input id="edit-title" name="title" type="text">
                     </div>
 
                     <div class="form_group">
                         <label for="edit-price">Price:</label>
-                        <input id="edit-price" type="number" min="0">
+                        <input id="edit-price" name="price" type="number" min="0" step="any">
                     </div>
 
                     <div class="form_group">
                         <label for="edit-stock">Stock:</label>
-                        <input id="edit-stock" type="number" min="0">
+                        <input id="edit-stock" name="stock" type="number" min="0">
                     </div>
 
                     <div class="edit_form_buttons">
