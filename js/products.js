@@ -96,10 +96,11 @@ function createProductsTable(products) {
 
     const parentContainer = document.querySelector(".row_parent");
 
+
     products.forEach(item => {
 
         const id = item.id;
-        const price = +((item.price * 100).toFixed(0));
+        const price = +((item.price).toFixed(0));
         const stock = item.stock;
         const name = item.title;
         const image = item.thumbnail;
@@ -166,12 +167,13 @@ function editProduct(id, products) {
 
     const imgPrev = editForm.querySelector("#edit-image-preview");
 
+
     // show existing elements
 
     const target = products.find(item => item.id === id);
 
     //pushing data inot currentData
-    currentEditingData = {...target};
+    currentEditingData = { ...target };
 
     const {
         thumbnail,
@@ -216,7 +218,7 @@ function handleEvents(e) {
     }
 
     if (editBtn) {
-        // console.log("edit")
+        // console.log(editBtn)
         const parent = editBtn.closest(".row")
         const id = +(parent.id)
         editProduct(id, products);
@@ -233,6 +235,8 @@ function handleEvents(e) {
 
 function validateFormData(data) {
     const formData = Object.fromEntries(data.entries());
+
+    // console.log("formData: ", formData)
 
     let {
         image,
@@ -254,12 +258,18 @@ function validateFormData(data) {
         "image/webp"
     ]
 
+    const MAX_SIZE = 3 * 1024 * 1024;
+
     if (!allowedImages.includes(image.type)) {
-        alert("Invalid image");
-        return;
+        alert("Only JPG, PNG, and WEBP images are allowed.");
+        return null;
     }
 
-    if (image.size > (3 * 1024 * 1024)) return
+    if (image.size > MAX_SIZE) {
+        alert("Image size must be less than 3 MB.");
+        return null;
+    }
+
 
     const thumbnail = URL.createObjectURL(image)
     // console.log("lco: ", thumbnail)
@@ -312,9 +322,14 @@ function handleAddProductForm(e) {
 
     let data = new FormData(e.target);
 
+    // console.log(data)
+
     data = validateFormData(data)
 
+
     // console.log("fresh data: ", data);
+
+    if(!data) return;
 
     products.unshift(data);
 
@@ -338,28 +353,27 @@ function handleAddProductForm(e) {
     setTimeout(() => {
         p.remove();
         modalOverlay.classList.remove("active")
-    }, 2000)
+    }, 1000)
 
 }
 
 function handleEditPreview() {
 
-    // console.dir(inputAddImg)
+    console.dir(inputAddImg)
     const file = inputEditImg.files[0];
 
-    // console.log(file)
+    console.log(file)
 
     const localURL = URL.createObjectURL(file);
 
     imagePrevEdit.src = localURL;
-    imagePrevEdit.hidden = false;
 
 
 }
 
 function validateProductUpdation(formData) {
-    console.log("orginal: ", currentEditingData);
-    console.log("formData :", formData);
+    // console.log("orginal: ", currentEditingData);
+    // console.log("formData :", formData);
 
     let updatedData = {};
 
@@ -370,7 +384,7 @@ function validateProductUpdation(formData) {
         stock: origStock
     } = currentEditingData;
 
-    updatedData = {...currentEditingData}
+    updatedData = { ...currentEditingData }
 
     /****formData****/
     let {
@@ -384,46 +398,36 @@ function validateProductUpdation(formData) {
     price = +(price)
     stock = +(stock)
 
-
-    // console.log(origTitle + " : " + title)
-    // console.log(origPrice + " : " + price)
-    // console.log(origStock + " : " + stock)
-
     // validate image
-    console.log(imageSize)
-    if(imageSize > 0) {
-        console.log("image updated")
+    if (imageSize > 0) {
+        // console.log("image updated")
 
-        // console.log(image)
-        const thumbnail =  URL.createObjectURL(image);
-        console.log(thumbnail)
-
-        console.log("before: ", updatedData)
-
-        console.log(updatedData[thumbnail])
-        console.log(updatedData.thumbnail)
+        const thumbnail = URL.createObjectURL(image);
         updatedData.thumbnail = thumbnail;
-
-        console.log("after: ", updatedData)
     }
- console.log(imageSize)
-    
+
 
     // compare title
-    if(origTitle !== title) {
-        console.log("title updated")
+    if (origTitle !== title) {
+        // console.log("title updated")
+        updatedData.title = title;
     }
 
     //compare price
-    if(origPrice !== price) {
-        console.log("price updated")
+    if (origPrice !== price) {
+        // console.log("price updated")
+        updatedData.price = price;
     }
 
     //compare price
-    if(origStock !== stock){
-         console.log("stock updated")
+    if (origStock !== stock) {
+        // console.log("stock updated")
+        updatedData.stock = stock;
     }
 
+    // console.log("final: ", updatedData)
+
+    return updatedData;
 
 }
 
@@ -431,14 +435,46 @@ function handleEditProductForm(e) {
     e.preventDefault();
 
 
-    let data =  new FormData(e.target)
+    let data = new FormData(e.target)
 
     const formData = Object.fromEntries(data.entries());
 
     // console.log(formData)
 
     //validate data updated or not
-    validateProductUpdation(formData);
+    const editedData = validateProductUpdation(formData);
+
+    // console.log(products)
+    // console.log("currentEdit: ", currentEditingData)
+    // console.log("edited : ", editedData)
+
+    const { id } = editedData;
+
+    const index = products.findIndex(item => item.id === id);
+
+    // console.log(index)
+
+    products[index] = editedData;
+
+
+    renderProducts(products)
+    localStorage.setItem("items", JSON.stringify(products));
+    // console.log("after edit prod: ", products)
+
+    // reset form
+    editForm.reset();
+
+    //adding succes msg
+    const p = document.createElement("p")
+    p.classList.add("success_msg")
+    p.textContent = "Product edited successfully...";
+    editForm.append(p)
+
+    setTimeout(() => {
+        p.remove();
+        modalOverlay.classList.remove("active")
+    }, 1000)
+
 }
 
 async function getProducts() {
@@ -521,7 +557,6 @@ modalOverlay.addEventListener("click", (e) => {
         addFormContent.classList.remove("show_modal")
         editFormContent.classList.remove("show_modal")
         imagePrevAdd.hidden = true;
-        imagePrevEdit.hidden = true;
         addForm.reset();
     }
 })
