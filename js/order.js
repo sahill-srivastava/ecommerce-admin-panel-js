@@ -2,8 +2,12 @@
 import { rawOrdersData } from "./utils/rawOrdersData.js";
 import { rawUsersData } from "./utils/rawUsersData.js";
 
+//Storage imports
+import { saveOrders } from "./storage.js";
+import { loadOrders } from "./storage.js";
 
-
+//DOM refs
+import { appContent } from "./refs.js";
 
 
 /*----------------States-----------------*/
@@ -65,11 +69,83 @@ function normaliseData(rawOrdersData, rawUsersData) {
 }
 
 
+function createOrdersTable(orders) {
+    // console.log(orders)
+
+    if (orders.length === 0) return;
+
+    // console.log(appContent)
+
+    appContent.innerHTML = "";
+
+    appContent.innerHTML = `
+
+                <div class="parent_holder">
+
+                    <div class="parent_container">
+
+                        <div class="row row_six row_header">
+                            <div>OrderID</div>
+                            <div>Customer</div>
+                            <div>Date</div>
+                            <div>Total (Rs)</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+
+                        <div class="row_parent order_row_parent">
+
+                            
+
+                        </div>
+
+                    </div>
+
+                </div>    
+    `;
+
+    const orderParent = document.querySelector(".order_row_parent");
+
+    orders.forEach(order => {
+
+        // console.log(order)
+
+        const {
+            userId,
+            customerName,
+            date,
+            total,
+            status
+        } = order
+
+        const div = document.createElement("div")
+        div.classList.add("row", "row_six");
+
+        div.innerHTML = `
+            <div class="order_id_box boxes">${userId}</div>
+            <div class="cutomer_box boxes">${customerName}</div>
+            <div class="date_box boxes">${date}</div>
+            <div class="total_box boxes">${total}</div>
+            <div class="status_box boxes">${status}</div>
+            <div class="view_box boxes">
+                <button class="order_view_button view_btn">View</button>
+            </div>
+        `
+
+        orderParent.append(div)
+    })
+
+
+}
+
 
 
 /*----------------UI functions-----------------*/
 
+function renderOrders(orders) {
 
+    createOrdersTable(orders)
+}
 
 
 
@@ -77,12 +153,17 @@ function normaliseData(rawOrdersData, rawUsersData) {
 
 export function handleOrders() {
 
-   const result =  normaliseData(rawOrdersData, rawUsersData)
+    const result = normaliseData(rawOrdersData, rawUsersData)
 
+    if (result.length === 0) return;
 
     orders = [...result];
+    // console.log("initial orders: ", orders)
 
-    console.log("initial orders: ", orders)
+    //save to localestorage;
+    saveOrders(orders)
+
+    renderOrders(orders)
 
 }
 
