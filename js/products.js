@@ -200,7 +200,9 @@ function deleteProduct(id) {
     // console.log(products)
     renderProducts(products)
 
-    localStorage.setItem("items", JSON.stringify(products));
+    // localStorage.setItem("items", JSON.stringify(products));
+
+    saveProducts(products)
 
 }
 
@@ -329,16 +331,17 @@ function handleAddProductForm(e) {
 
     // console.log("fresh data: ", data);
 
-    if(!data) return;
+    if (!data) return;
 
     products.unshift(data);
 
 
     // console.log("final pro: ", products)
 
-    localStorage.setItem("items", JSON.stringify(products));
 
     renderProducts(products)
+    // localStorage.setItem("items", JSON.stringify(products));
+    saveProducts(products)
 
     // reset form
     imagePrevAdd.hidden = true;
@@ -353,16 +356,17 @@ function handleAddProductForm(e) {
     setTimeout(() => {
         p.remove();
         modalOverlay.classList.remove("active")
+        addFormContent.classList.remove("show_modal")
     }, 1000)
 
 }
 
 function handleEditPreview() {
 
-    console.dir(inputAddImg)
+    // console.dir(inputAddImg)
     const file = inputEditImg.files[0];
 
-    console.log(file)
+    // console.log(file)
 
     const localURL = URL.createObjectURL(file);
 
@@ -459,6 +463,7 @@ function handleEditProductForm(e) {
 
     renderProducts(products)
     localStorage.setItem("items", JSON.stringify(products));
+    saveProducts(products)
     // console.log("after edit prod: ", products)
 
     // reset form
@@ -473,6 +478,7 @@ function handleEditProductForm(e) {
     setTimeout(() => {
         p.remove();
         modalOverlay.classList.remove("active")
+        editFormContent.classList.remove("show_modal")
     }, 1000)
 
 }
@@ -541,7 +547,7 @@ export async function handleProducts() {
 
 
 
-/*----------------Data functions-----------------*/
+/*----------------Event listeners-----------------*/
 
 appContent.addEventListener("click", handleEvents)
 

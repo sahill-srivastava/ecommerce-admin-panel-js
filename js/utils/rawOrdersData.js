@@ -1,32 +1,300 @@
-export const orders = [
-    { orderId: "#1001", customerName: "Rahul Sharma", date: "2026-01-05", total: 2400, status: "Delivered", payment: "Paid" },
-    { orderId: "#1002", customerName: "Priya Verma", date: "2026-01-06", total: 3999, status: "Delivered", payment: "Paid" },
-    { orderId: "#1003", customerName: "Amit Singh", date: "2026-01-07", total: 1299, status: "Processing", payment: "Paid" },
-    { orderId: "#1004", customerName: "Sneha Gupta", date: "2026-01-08", total: 6499, status: "Pending", payment: "Pending" },
-    { orderId: "#1005", customerName: "Arjun Yadav", date: "2026-01-09", total: 2799, status: "Delivered", payment: "Paid" },
-    { orderId: "#1006", customerName: "Neha Kapoor", date: "2026-01-10", total: 9999, status: "Shipped", payment: "Paid" },
-    { orderId: "#1007", customerName: "Rohan Mehta", date: "2026-01-11", total: 699, status: "Delivered", payment: "Paid" },
-    { orderId: "#1008", customerName: "Pooja Sharma", date: "2026-01-12", total: 1599, status: "Processing", payment: "Paid" },
-    { orderId: "#1009", customerName: "Vikas Kumar", date: "2026-01-13", total: 8999, status: "Pending", payment: "Pending" },
-    { orderId: "#1010", customerName: "Anjali Jain", date: "2026-01-14", total: 4999, status: "Delivered", payment: "Paid" },
-    { orderId: "#1011", customerName: "Rahul Sharma", date: "2026-01-15", total: 1200, status: "Delivered", payment: "Paid" },
-    { orderId: "#1012", customerName: "Priya Verma", date: "2026-01-16", total: 2299, status: "Shipped", payment: "Paid" },
-    { orderId: "#1013", customerName: "Amit Singh", date: "2026-01-17", total: 7999, status: "Delivered", payment: "Paid" },
-    { orderId: "#1014", customerName: "Sneha Gupta", date: "2026-01-18", total: 399, status: "Cancelled", payment: "Refunded" },
-    { orderId: "#1015", customerName: "Arjun Yadav", date: "2026-01-19", total: 2199, status: "Delivered", payment: "Paid" },
-    { orderId: "#1016", customerName: "Neha Kapoor", date: "2026-01-20", total: 3499, status: "Processing", payment: "Paid" },
-    { orderId: "#1017", customerName: "Rohan Mehta", date: "2026-01-21", total: 1799, status: "Delivered", payment: "Paid" },
-    { orderId: "#1018", customerName: "Pooja Sharma", date: "2026-01-22", total: 24999, status: "Shipped", payment: "Paid" },
-    { orderId: "#1019", customerName: "Vikas Kumar", date: "2026-01-23", total: 599, status: "Delivered", payment: "Paid" },
-    { orderId: "#1020", customerName: "Anjali Jain", date: "2026-01-24", total: 899, status: "Pending", payment: "Pending" },
-    { orderId: "#1021", customerName: "Rahul Sharma", date: "2026-01-25", total: 2499, status: "Delivered", payment: "Paid" },
-    { orderId: "#1022", customerName: "Priya Verma", date: "2026-01-26", total: 12999, status: "Shipped", payment: "Paid" },
-    { orderId: "#1023", customerName: "Amit Singh", date: "2026-01-27", total: 6999, status: "Processing", payment: "Paid" },
-    { orderId: "#1024", customerName: "Sneha Gupta", date: "2026-01-28", total: 1499, status: "Delivered", payment: "Paid" },
-    { orderId: "#1025", customerName: "Arjun Yadav", date: "2026-01-29", total: 2899, status: "Delivered", payment: "Paid" },
-    { orderId: "#1026", customerName: "Neha Kapoor", date: "2026-01-30", total: 799, status: "Delivered", payment: "Paid" },
-    { orderId: "#1027", customerName: "Rohan Mehta", date: "2026-01-31", total: 1399, status: "Pending", payment: "Pending" },
-    { orderId: "#1028", customerName: "Pooja Sharma", date: "2026-02-01", total: 999, status: "Delivered", payment: "Paid" },
-    { orderId: "#1029", customerName: "Vikas Kumar", date: "2026-02-02", total: 2499, status: "Delivered", payment: "Paid" },
-    { orderId: "#1030", customerName: "Anjali Jain", date: "2026-02-03", total: 1999, status: "Shipped", payment: "Paid" }
+export const rawOrdersData = [
+    {
+        orderId: "#1001",
+        userId: 1,
+        items: [
+            { productId: 1, qty: 2 },
+            { productId: 4, qty: 1 }
+        ],
+        total: 32.97,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-01"
+    },
+    {
+        orderId: "#1002",
+        userId: 2,
+        items: [
+            { productId: 7, qty: 1 }
+        ],
+        total: 129.99,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-02"
+    },
+    {
+        orderId: "#1003",
+        userId: 3,
+        items: [
+            { productId: 11, qty: 1 }
+        ],
+        total: 1899.99,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-02"
+    },
+    {
+        orderId: "#1004",
+        userId: 4,
+        items: [
+            { productId: 15, qty: 1 }
+        ],
+        total: 799.99,
+        status: "Cancelled",
+        payment: "Refunded",
+        date: "2026-03-03"
+    },
+    {
+        orderId: "#1005",
+        userId: 5,
+        items: [
+            { productId: 8, qty: 1 },
+            { productId: 10, qty: 1 }
+        ],
+        total: 169.98,
+        status: "Shipped",
+        payment: "Paid",
+        date: "2026-03-03"
+    },
+    {
+        orderId: "#1006",
+        userId: 6,
+        items: [{ productId: 13, qty: 2 }],
+        total: 599.98,
+        status: "Pending",
+        payment: "Pending",
+        date: "2026-03-04"
+    },
+    {
+        orderId: "#1007",
+        userId: 7,
+        items: [{ productId: 20, qty: 5 }],
+        total: 24.95,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-05"
+    },
+    {
+        orderId: "#1008",
+        userId: 8,
+        items: [{ productId: 17, qty: 3 }],
+        total: 38.97,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-05"
+    },
+    {
+        orderId: "#1009",
+        userId: 9,
+        items: [{ productId: 12, qty: 1 }],
+        total: 2499.99,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-06"
+    },
+    {
+        orderId: "#1010",
+        userId: 10,
+        items: [{ productId: 14, qty: 1 }],
+        total: 499.99,
+        status: "Shipped",
+        payment: "Paid",
+        date: "2026-03-07"
+    },
+    {
+        orderId: "#1011",
+        userId: 11,
+        items: [{ productId: 2, qty: 2 }],
+        total: 39.98,
+        status: "Pending",
+        payment: "Pending",
+        date: "2026-03-08"
+    },
+    {
+        orderId: "#1012",
+        userId: 12,
+        items: [{ productId: 24, qty: 2 }],
+        total: 29.98,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-08"
+    },
+    {
+        orderId: "#1013",
+        userId: 13,
+        items: [{ productId: 6, qty: 2 }],
+        total: 99.98,
+        status: "Cancelled",
+        payment: "Refunded",
+        date: "2026-03-09"
+    },
+    {
+        orderId: "#1014",
+        userId: 14,
+        items: [{ productId: 3, qty: 4 }],
+        total: 59.96,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-10"
+    },
+    {
+        orderId: "#1015",
+        userId: 15,
+        items: [{ productId: 19, qty: 5 }],
+        total: 49.95,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-10"
+    },
+    {
+        orderId: "#1016",
+        userId: 16,
+        items: [{ productId: 18, qty: 2 }],
+        total: 17.98,
+        status: "Pending",
+        payment: "Pending",
+        date: "2026-03-11"
+    },
+    {
+        orderId: "#1017",
+        userId: 17,
+        items: [{ productId: 21, qty: 10 }],
+        total: 14.90,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-11"
+    },
+    {
+        orderId: "#1018",
+        userId: 18,
+        items: [
+            { productId: 7, qty: 1 },
+            { productId: 1, qty: 3 }
+        ],
+        total: 159.96,
+        status: "Shipped",
+        payment: "Paid",
+        date: "2026-03-12"
+    },
+    {
+        orderId: "#1019",
+        userId: 19,
+        items: [{ productId: 22, qty: 3 }],
+        total: 32.97,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-12"
+    },
+    {
+        orderId: "#1020",
+        userId: 20,
+        items: [{ productId: 23, qty: 6 }],
+        total: 17.94,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-13"
+    },
+    {
+        orderId: "#1021",
+        userId: 21,
+        items: [{ productId: 11, qty: 1 }],
+        total: 1899.99,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-13"
+    },
+    {
+        orderId: "#1022",
+        userId: 22,
+        items: [
+            { productId: 24, qty: 2 },
+            { productId: 20, qty: 4 }
+        ],
+        total: 49.94,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-14"
+    },
+    {
+        orderId: "#1023",
+        userId: 23,
+        items: [{ productId: 12, qty: 1 }],
+        total: 2499.99,
+        status: "Cancelled",
+        payment: "Refunded",
+        date: "2026-03-14"
+    },
+    {
+        orderId: "#1024",
+        userId: 24,
+        items: [{ productId: 9, qty: 2 }],
+        total: 139.98,
+        status: "Shipped",
+        payment: "Paid",
+        date: "2026-03-15"
+    },
+    {
+        orderId: "#1025",
+        userId: 25,
+        items: [
+            { productId: 4, qty: 2 },
+            { productId: 5, qty: 2 }
+        ],
+        total: 43.96,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-15"
+    },
+    {
+        orderId: "#1026",
+        userId: 26,
+        items: [{ productId: 14, qty: 2 }],
+        total: 999.98,
+        status: "Pending",
+        payment: "Pending",
+        date: "2026-03-16"
+    },
+    {
+        orderId: "#1027",
+        userId: 27,
+        items: [{ productId: 13, qty: 1 }],
+        total: 299.99,
+        status: "Processing",
+        payment: "Paid",
+        date: "2026-03-16"
+    },
+    {
+        orderId: "#1028",
+        userId: 28,
+        items: [
+            { productId: 15, qty: 1 },
+            { productId: 16, qty: 5 }
+        ],
+        total: 809.94,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-17"
+    },
+    {
+        orderId: "#1029",
+        userId: 29,
+        items: [{ productId: 6, qty: 1 }],
+        total: 49.99,
+        status: "Shipped",
+        payment: "Paid",
+        date: "2026-03-17"
+    },
+    {
+        orderId: "#1030",
+        userId: 30,
+        items: [
+            { productId: 8, qty: 1 },
+            { productId: 10, qty: 1 },
+            { productId: 3, qty: 2 }
+        ],
+        total: 199.96,
+        status: "Delivered",
+        payment: "Paid",
+        date: "2026-03-18"
+    }
 ];
