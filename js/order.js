@@ -70,7 +70,7 @@ function normaliseData(rawOrdersData, rawUsersData) {
 
 
 function createOrdersTable(orders) {
-    // console.log(orders)
+    console.log(orders)
 
     if (orders.length === 0) return;
 
@@ -111,7 +111,7 @@ function createOrdersTable(orders) {
         // console.log(order)
 
         const {
-            userId,
+            orderId,
             customerName,
             date,
             total,
@@ -122,7 +122,7 @@ function createOrdersTable(orders) {
         div.classList.add("row", "row_six");
 
         div.innerHTML = `
-            <div class="order_id_box boxes">${userId}</div>
+            <div class="order_id_box boxes">${orderId}</div>
             <div class="cutomer_box boxes">${customerName}</div>
             <div class="date_box boxes">${date}</div>
             <div class="total_box boxes">${total}</div>
@@ -158,7 +158,7 @@ export function handleOrders() {
     if (result.length === 0) return;
 
     orders = [...result];
-    // console.log("initial orders: ", orders)
+    console.log("initial orders: ", orders)
 
     //save to localestorage;
     saveOrders(orders)
