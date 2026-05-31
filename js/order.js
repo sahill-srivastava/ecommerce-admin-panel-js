@@ -9,6 +9,11 @@ import { loadOrders } from "./storage.js";
 //DOM refs
 import { appContent } from "./refs.js";
 
+// Modals
+import {
+    modalOverlay,
+} from "./refs.js";
+
 
 /*----------------States-----------------*/
 
@@ -70,7 +75,7 @@ function normaliseData(rawOrdersData, rawUsersData) {
 
 
 function createOrdersTable(orders) {
-    console.log(orders)
+    // console.log(orders)
 
     if (orders.length === 0) return;
 
@@ -151,6 +156,18 @@ function renderOrders(orders) {
 
 /*----------------Data functions-----------------*/
 
+function handleView(e) {
+
+    const viewBtn = e.target.closest(".order_view_button")
+
+    if(viewBtn) {
+        console.log("viewbutton tapped")
+
+            modalOverlay.classList.add("active")
+
+    }
+}
+
 export function handleOrders() {
 
     const result = normaliseData(rawOrdersData, rawUsersData)
@@ -158,7 +175,7 @@ export function handleOrders() {
     if (result.length === 0) return;
 
     orders = [...result];
-    console.log("initial orders: ", orders)
+    // console.log("initial orders: ", orders)
 
     //save to localestorage;
     saveOrders(orders)
@@ -172,3 +189,5 @@ export function handleOrders() {
 
 
 /*----------------Event listeners-----------------*/
+
+appContent.addEventListener("click", handleView)
