@@ -318,6 +318,41 @@
                 </form>
             </div>
 
+             <!-- order details -->
+            <div class="modal_edit_content_box">
+                <h2>Order Details</h2>
+                <form id="edit-form">
+
+                    <div class="form_group">
+                        <label for="edit-image">Choose Image:</label>
+                        <div class="preview_image_box">
+                            <img id="edit-image-preview" src="#" alt="preview">
+                            <input id="edit-image" name="image" type="file" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-title">Title:</label>
+                        <input id="edit-title" name="title" type="text">
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-price">Price:</label>
+                        <input id="edit-price" name="price" type="number" min="0" step="any">
+                    </div>
+
+                    <div class="form_group">
+                        <label for="edit-stock">Stock:</label>
+                        <input id="edit-stock" name="stock" type="number" min="0">
+                    </div>
+
+                    <div class="edit_form_buttons">
+                        <button id="submit-button-edit" class="submit" type="submit">Update Details</button>
+                        <button id="cancel-button-edit" class="cancel">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
 
         </div>
     </div>
