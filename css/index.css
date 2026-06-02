@@ -690,7 +690,7 @@ form {
 }
 
 .order_details_container hr {
-    margin-block: 20px;
+    margin-block: 10px;
     border: none;
     border-top: 2px dashed #999;
 }
@@ -700,9 +700,16 @@ form {
     gap: 20px;
 }
 
-.order_products_container .order_title{
+.order_products_container .order_title {
     display: grid;
     grid-template-columns: 40% 1fr;
+}
+
+.order_products_header {
+    display: grid;
+    grid-template-columns: 40% 1fr 1fr;
+    /* font-size: 15px; */
+    font-weight: 600;
 }
 
 .order_products_parent {
@@ -710,17 +717,18 @@ form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    border: 1px solid #919191;
-    border-radius: 2px;
-    padding: 5px 10px;
-    max-height: 80px;
+    max-height: 70px;
     overflow-y: auto;
 }
 
 .order_product_item_group {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 40% 1fr 1fr;
     align-items: center;
 
     font-size: 14px;
+}
+
+.order_product_item_quantity, .order_product_item_price {
+    margin-left: 20px;
 }

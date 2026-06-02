@@ -160,10 +160,10 @@ function handleView(e) {
 
     const viewBtn = e.target.closest(".order_view_button")
 
-    if(viewBtn) {
+    if (viewBtn) {
         console.log("viewbutton tapped")
 
-            modalOverlay.classList.add("active")
+        modalOverlay.classList.add("active")
 
     }
 }
