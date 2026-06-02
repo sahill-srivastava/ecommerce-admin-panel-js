@@ -19,7 +19,7 @@ import {
 
 /*----------------States-----------------*/
 
-let orders = [];
+export let orders = [];
 
 
 

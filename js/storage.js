@@ -15,3 +15,12 @@ export function saveOrders(orders) {
 export function loadOrders() {
     return JSON.parse(localStorage.getItem("orders"));
 }
+
+//users storage
+export function saveUsers(users) {
+    localStorage.setItem("users", JSON.stringify(users))
+}
+
+export function loadUsers() {
+    return JSON.parse(localStorage.getItem("users"));
+}
