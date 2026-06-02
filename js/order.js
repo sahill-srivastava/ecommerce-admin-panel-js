@@ -1,6 +1,7 @@
 //Data imports
 import { rawOrdersData } from "./utils/rawOrdersData.js";
 import { rawUsersData } from "./utils/rawUsersData.js";
+import { products } from "./products.js";
 
 //Storage imports
 import { saveOrders } from "./storage.js";
@@ -11,6 +12,7 @@ import { appContent } from "./refs.js";
 
 // Modals
 import {
+    orderModal,
     modalOverlay,
 } from "./refs.js";
 
@@ -116,6 +118,7 @@ function createOrdersTable(orders) {
         // console.log(order)
 
         const {
+            userId,
             orderId,
             customerName,
             date,
@@ -125,6 +128,7 @@ function createOrdersTable(orders) {
 
         const div = document.createElement("div")
         div.classList.add("row", "row_six");
+        div.id = userId;
 
         div.innerHTML = `
             <div class="order_id_box boxes">${orderId}</div>
@@ -152,17 +156,52 @@ function renderOrders(orders) {
     createOrdersTable(orders)
 }
 
+function  displayOrderDetails(item){
+
+    console.log(products)
+    console.log(item)
+
+    console.log(orderModal)
+
+    orderModal.customerName.textContent = item.customerName;
+    orderModal.orderDate.textContent = item.date;
+    orderModal.paymentStatus.textContent = item.payment;
+    orderModal.orderTotal.textContent = item.total;
+
+    //prdducts
+
+
+}
 
 
 /*----------------Data functions-----------------*/
 
+function handleOrderDetails(id, orders) {
+    // console.log(id, orders)
+
+    if(!id || orders.length === 0) return;
+
+    const targetOrder = orders.find(item => item.userId === id);
+    // console.log(targetOrder)
+
+    displayOrderDetails(targetOrder)
+
+    
+}
+
 function handleView(e) {
 
+    // console.log(e.target)
+
     const viewBtn = e.target.closest(".order_view_button")
-
+    
     if (viewBtn) {
-        console.log("viewbutton tapped")
-
+        // console.log("viewbutton tapped")
+        
+        const parent = viewBtn.closest(".row_six")
+        // console.log(parent.id)
+        const id = Number(parent.id);
+        handleOrderDetails(id, orders)
         modalOverlay.classList.add("active")
 
     }

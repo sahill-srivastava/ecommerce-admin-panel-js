@@ -27,7 +27,7 @@ import {
 
 /*----------------States-----------------*/
 
-let products = [];
+export let products = [];
 
 let currentEditingData = null;
 
