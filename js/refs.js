@@ -17,6 +17,7 @@ export const addProductBtn = document.getElementById("add-product");
 //Orders
 export const orderModal = {
     customerName: document.querySelector(".customer_name"),
+    orderId: document.querySelector(".order_id"),
     orderDate: document.querySelector(".order_date"),
     paymentStatus: document.querySelector(".payment_status"),
     orderStatus: document.querySelector(".order_status"),

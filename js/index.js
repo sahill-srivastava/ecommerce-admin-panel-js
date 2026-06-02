@@ -4,7 +4,7 @@ import { handleOrders } from "./order.js";
 
 
 function handleOrderClick() {
-    console.log("tapp")
+    // console.log("tapp")
 
     handleOrders();
 }

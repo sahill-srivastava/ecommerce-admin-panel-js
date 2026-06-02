@@ -157,8 +157,11 @@ function renderOrders(orders) {
 }
 
 function  displayOrderDetails(item){
+    orderModal.productsParent.innerHTML = "";
 
+    // console.log(item)
 
+    orderModal.orderId.textContent = item?.orderId
     orderModal.customerName.textContent = item?.customerName;
     orderModal.orderDate.textContent = item?.date;
     orderModal.paymentStatus.textContent = item?.payment;
