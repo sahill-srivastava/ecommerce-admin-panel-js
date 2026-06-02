@@ -2,6 +2,15 @@
 export const items = document.querySelectorAll('.icon_hover');
 export const appContent = document.querySelector(".app_content");
 
+//Sidebar
+export const sidebarBtns = {
+    productsBtn: document.getElementById("products"),
+    ordersBtn: document.getElementById("orders"),
+    usersBtn: document.getElementById("users"),
+    settingsBtn: document.getElementById("settings"),
+    closeSidebarBtn: document.querySelector(".close_button")
+}
+
 //Products
 export const addProductBtn = document.getElementById("add-product");
 

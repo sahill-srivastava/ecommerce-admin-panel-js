@@ -158,17 +158,35 @@ function renderOrders(orders) {
 
 function  displayOrderDetails(item){
 
-    console.log(products)
-    console.log(item)
 
-    console.log(orderModal)
+    orderModal.customerName.textContent = item?.customerName;
+    orderModal.orderDate.textContent = item?.date;
+    orderModal.paymentStatus.textContent = item?.payment;
+    orderModal.orderTotal.textContent = item?.total;
 
-    orderModal.customerName.textContent = item.customerName;
-    orderModal.orderDate.textContent = item.date;
-    orderModal.paymentStatus.textContent = item.payment;
-    orderModal.orderTotal.textContent = item.total;
+    //products
+    const productItems = item?.items;
+    // console.log(productItems)
+    orderModal.productsCount.textContent = `(${productItems.length})`;
 
-    //prdducts
+
+    productItems.forEach(item => {
+        const targetEl = products.find(el => el.id === item.productId);
+
+
+        const div = document.createElement("div");
+        div.classList.add("order_product_item_group");
+
+        div.innerHTML = `
+        <div class="order_product_item_title">
+           ${targetEl.title}
+        </div>
+        <div class="order_product_item_quantity">${item.qty}</div>
+        <div class="order_product_item_price">${targetEl.price}</div>        
+        `
+
+        orderModal.productsParent.append(div);
+    })
 
 
 }
