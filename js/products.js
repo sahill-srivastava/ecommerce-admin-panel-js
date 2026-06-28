@@ -1,15 +1,15 @@
 // DOM refs
-import { appContent } from "./refs.js";
-import { items } from "./refs.js";
-import { addProductBtn } from "./refs.js";
+import { appContent } from "./utils/refs.js";
+import { items } from "./utils/refs.js";
+import { addProductBtn } from "./utils/refs.js";
 
 //localestorage imports
-import { saveProducts, loadProducts } from "./storage.js";
+import { saveProducts, loadProducts } from "./storage/storage.js";
 
 // Helpers imports
 import {
     handleIconHover
-} from "./helpers.js";
+} from "./utils/helpers.js";
 
 // Modals
 import {
@@ -22,7 +22,7 @@ import {
     addFormContent,
     editForm,
     editFormContent
-} from "./refs.js";
+} from "./utils/refs.js";
 
 
 /*----------------States-----------------*/

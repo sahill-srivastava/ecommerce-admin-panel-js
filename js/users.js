@@ -5,11 +5,11 @@ import { products } from "./products.js";
 import { orders } from "./order.js";
 
 //Storage imports
-import { saveUsers } from "./storage.js";
-import { loadUsers } from "./storage.js";
+import { saveUsers } from "./storage/storage.js";
+import { loadUsers } from "./storage/storage.js";
 
 //DOM refs
-import { appContent } from "./refs.js";
+import { appContent } from "./utils/refs.js";
 
 
 /*----------------States-----------------*/
@@ -115,8 +115,3 @@ export function handleUsers() {
 
     renderUsers(users)
 }
-
-
-
-
-/*----------------Event listeners-----------------*/

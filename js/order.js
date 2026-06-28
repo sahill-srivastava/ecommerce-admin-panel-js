@@ -4,17 +4,17 @@ import { rawUsersData } from "./utils/rawUsersData.js";
 import { products } from "./products.js";
 
 //Storage imports
-import { saveOrders } from "./storage.js";
-import { loadOrders } from "./storage.js";
+import { saveOrders } from "./storage/storage.js";
+import { loadOrders } from "./storage/storage.js";
 
 //DOM refs
-import { appContent } from "./refs.js";
+import { appContent } from "./utils/refs.js";
 
 // Modals
 import {
     orderModal,
     modalOverlay,
-} from "./refs.js";
+} from "./utils/refs.js";
 
 
 /*----------------States-----------------*/
