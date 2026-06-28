@@ -7,7 +7,7 @@ import { handleSettings } from "./settings.js";
 
 /*----------------Events-----------------*/
 
-// document.addEventListener("DOMContentLoaded", handleProducts);
+document.addEventListener("DOMContentLoaded", handleProducts);
 
 sidebarBtns.productsBtn.addEventListener("click", handleProducts)
 sidebarBtns.ordersBtn.addEventListener("click", handleOrders)
