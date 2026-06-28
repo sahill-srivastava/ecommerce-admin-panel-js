@@ -1,6 +1,7 @@
 //Main
 export const items = document.querySelectorAll('.icon_hover');
 export const appContent = document.querySelector(".app_content");
+export const formAppContent = document.querySelector(".form_app_content");
 
 //Sidebar
 export const sidebarBtns = {
