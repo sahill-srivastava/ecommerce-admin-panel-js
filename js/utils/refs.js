@@ -27,6 +27,16 @@ export const orderModal = {
     orderTotal: document.querySelector(".order_total")
 }
 
+//settings - forms
+
+export const adminForm = {
+    formImg: document.getElementById("image"),
+    formName: document.getElementById("name"),
+    formEmail: document.getElementById("email"),
+    formPass: document.getElementById("password"),
+    formSubmitBtn: document.getElementById("save-detail"),
+}
+
 // Modals - overlay
 export const modalOverlay = document.querySelector(".modal_overlay_container")
 
