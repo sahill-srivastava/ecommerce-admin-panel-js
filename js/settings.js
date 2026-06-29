@@ -1,6 +1,6 @@
 import { appContent } from "./utils/refs.js"
 import { formAppContent } from "./utils/refs.js"
-import { adminForm } from "./utils/refs.js";
+import { adminFormObj } from "./utils/refs.js";
 
 /*
 
@@ -13,7 +13,7 @@ function showSettingsUi() {
     formAppContent.style.display = "flex";
 }
 
-function validateInputs(){
+function validateInputs() {
 
 
 
@@ -38,14 +38,16 @@ export function handleSettings() {
 
 function handleForm(e) {
     e.preventDefault();
+    console.log("tap")
 
-    console.log(adminForm.formImg.value)
+    const data = new FormData(adminFormObj.adminForm)
 
-    // const name = adminForm.formName.value;
-    const name = adminForm.formName.value;
+    for (const [key, value] of data.entries()) {
+        console.log(key, value);
+    }
 }
 
 /*----------------Event listeners-----------------*/
 
-adminForm.formSubmitBtn.addEventListener("click", handleForm)
+adminFormObj.formSubmitBtn.addEventListener("click", handleForm)
 

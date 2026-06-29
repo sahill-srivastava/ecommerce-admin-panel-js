@@ -29,7 +29,8 @@ export const orderModal = {
 
 //settings - forms
 
-export const adminForm = {
+export const adminFormObj = {
+    adminForm: document.getElementById("admin-form"),
     formImg: document.getElementById("image"),
     formName: document.getElementById("name"),
     formEmail: document.getElementById("email"),
