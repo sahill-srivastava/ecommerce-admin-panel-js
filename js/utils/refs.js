@@ -28,15 +28,8 @@ export const orderModal = {
 }
 
 //settings - forms
-
-export const adminFormObj = {
-    adminForm: document.getElementById("admin-form"),
-    formImg: document.getElementById("image"),
-    formName: document.getElementById("name"),
-    formEmail: document.getElementById("email"),
-    formPass: document.getElementById("password"),
-    formSubmitBtn: document.getElementById("save-detail"),
-}
+export const adminForm = document.getElementById("admin-form")
+export const formSubmitBtn = document.getElementById("save-detail")
 
 // Modals - overlay
 export const modalOverlay = document.querySelector(".modal_overlay_container")
