@@ -342,6 +342,17 @@ main {
 
 /* setting styling */
 
+.error-msg {
+    display: none;
+    color: red;
+    font-size: 15px;
+}
+
+.success {
+    color: green !important;
+}
+
+
 .form_app_content {
     margin-top: 30px;
     margin-inline: 20px;

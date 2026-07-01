@@ -30,6 +30,7 @@ export const orderModal = {
 //settings - forms
 export const adminForm = document.getElementById("admin-form")
 export const formSubmitBtn = document.getElementById("save-detail")
+export const formErrMsg = document.querySelector(".error-msg");
 
 // Modals - overlay
 export const modalOverlay = document.querySelector(".modal_overlay_container")

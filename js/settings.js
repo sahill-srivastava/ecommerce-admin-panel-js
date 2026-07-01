@@ -1,4 +1,4 @@
-import { adminForm, formSubmitBtn, formAppContent, appContent } from "./utils/refs.js";
+import { adminForm, formSubmitBtn, formAppContent, appContent, formErrMsg } from "./utils/refs.js";
 
 /*
 
@@ -17,8 +17,10 @@ function validateInputs(formData) {
 
     //validate image
     if (!formData.image || formData.image.size === 0) {
-        alert("Please select an image...")
-        return false;
+        return {
+            success: false,
+            errorMsg: "Please select an image..."
+        }
     }
 
     const allowedImageTypes = [
@@ -28,11 +30,17 @@ function validateInputs(formData) {
     ]
 
     if (!allowedImageTypes.includes(formData.image.type)) {
-        return "Only JPG, PNG and WEBP images are allowed.";
+        return {
+            success: false,
+            errorMsg: "Only JPG, PNG and WEBP images are allowed."
+        }
     }
 
     if (formData.image.size > 5 * 1024 * 1024) {
-        return "Image must be less than 5MB.";
+        return {
+            success: false,
+            errorMsg: "Image must be less than 5MB."
+        }
     }
 
     //validate name
@@ -40,8 +48,18 @@ function validateInputs(formData) {
 
     const isNameValid = allowedName.test(formData.name.trim())
 
+    if (!formData.name.trim()) {
+        return {
+            success: false,
+            errorMsg: "Name is required."
+        };
+    }
+
     if (!isNameValid) {
-        return "Invalid Name"
+        return {
+            success: false,
+            errorMsg: "Name can contain only letters and spaces."
+        }
     }
 
     //validate email
@@ -49,8 +67,18 @@ function validateInputs(formData) {
 
     const isEmailValid = allowedEmail.test(formData.email.trim())
 
+    if (!formData.email.trim()) {
+        return {
+            success: false,
+            errorMsg: "Email is required."
+        };
+    }
+
     if (!isEmailValid) {
-        return "Invalid Email"
+        return {
+            success: false,
+            errorMsg: "Please enter a valid email address."
+        }
     }
 
     //validate password
@@ -59,10 +87,25 @@ function validateInputs(formData) {
 
     const isPasswordValid = allowedPassword.test(formData.password.trim())
 
-    if (!isPasswordValid) {
-        return "Invalid Password";
+    if (!formData.password.trim()) {
+        return {
+            success: false,
+            errorMsg: "Password is required."
+        };
     }
 
+    if (!isPasswordValid) {
+        return {
+            success: false,
+            errorMsg: "Password must be at least 8 characters and include an uppercase letter, lowercase letter, number, and special character."
+        }
+    }
+
+
+    return {
+        success: true,
+        errorMsg: "Settings saved successfully"
+    };
 
 }
 
@@ -96,8 +139,25 @@ function handleForm(e) {
     }
 
     // console.log("formData: ", formData)
-   const result  = validateInputs(formData);
-   console.log(result)
+    const result = validateInputs(formData);
+    console.log(result)
+
+    if (!result.success) {
+        formErrMsg.textContent = result.errorMsg;
+        formErrMsg.style.display = "block";
+        return;
+    }
+
+    console.log("success")
+
+    formErrMsg.textContent = result.errorMsg;
+    formErrMsg.classList.add("success");
+    formErrMsg.style.display = "block";
+
+    setTimeout(() => {
+         formErrMsg.style.display = "none";
+    }, 2000)
+
 
 }
 
