@@ -1,10 +1,8 @@
 import { adminForm, formSubmitBtn, formAppContent, appContent, formErrMsg } from "./utils/refs.js";
 
-/*
+/*----------------State-----------------*/
 
-*/
-
-
+let adminData = {};
 /*----------------Helper functions-----------------*/
 
 function showSettingsUi() {
@@ -140,15 +138,13 @@ function handleForm(e) {
 
     // console.log("formData: ", formData)
     const result = validateInputs(formData);
-    console.log(result)
+    // console.log(result)
 
     if (!result.success) {
         formErrMsg.textContent = result.errorMsg;
         formErrMsg.style.display = "block";
         return;
     }
-
-    console.log("success")
 
     formErrMsg.textContent = result.errorMsg;
     formErrMsg.classList.add("success");
@@ -157,6 +153,11 @@ function handleForm(e) {
     setTimeout(() => {
          formErrMsg.style.display = "none";
     }, 2000)
+
+    adminData = {...formData}
+
+    console.log(adminData)
+
 
 
 }
