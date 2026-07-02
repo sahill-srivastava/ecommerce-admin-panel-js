@@ -32,6 +32,29 @@ a {
     color: inherit;
 }
 
+/* login page styling */
+.login_parent_container {
+    width: 100vw;
+    height: 100vh;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login_content_container {
+    width: fit-content;
+}
+
+.login_content_container h1 {
+    color: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#login-form {
+    max-width: fit-content;
+}
 
 /* sidebar styling */
 
@@ -65,7 +88,17 @@ a {
 }
 
 .navigation_list li {
-    width: 100%;
+    list-style-type: none;
+    width: inherit;
+}
+
+.navigation_list li:hover {
+    background: var(--accent-color);
+    border-radius: 3px;
+}
+
+.navigation_list li a {
+    width: inherit;
     cursor: pointer;
     font-size: 18px;
     padding-block: 15px;
@@ -74,11 +107,7 @@ a {
     align-items: center;
     /* justify-content: center; */
     padding-left: 60px;
-}
 
-.navigation_list li:hover {
-    background: var(--accent-color);
-    border-radius: 3px;
 }
 
 .close_button_container {
@@ -366,7 +395,6 @@ main {
     border-radius: 8px;
     background: var(--secondary-color);
     box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-    display: none;
     flex-direction: column;
     gap: 30px;
     height: 85vh;
@@ -745,6 +773,7 @@ form {
     font-size: 14px;
 }
 
-.order_product_item_quantity, .order_product_item_price {
+.order_product_item_quantity,
+.order_product_item_price {
     margin-left: 20px;
 }

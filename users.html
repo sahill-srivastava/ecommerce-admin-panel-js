@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- lordicon lib -->
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <!-- sidebar -->
+    <aside class="sidebar_container">
+
+        <div class="close_button_container">
+            <div class="close_button"><i class="fa-solid fa-xmark"></i></div>
+        </div>
+        <h1>SS STORE</h1>
+        <ul class="navigation_list">
+            <li id="products" class="icon_hover">
+                <a href="/dashboard.html">
+                    <lord-icon src="https://cdn.lordicon.com/jeuxydnh.json" colors="primary:#ffffff,secondary:#ffffff">
+                    </lord-icon>
+                    Dashboard
+                </a>
+            </li>
+            <li id="products" class="icon_hover">
+                <a href="/products.html">
+                    <lord-icon src="https://cdn.lordicon.com/qfijwmqj.json" colors="primary:#ffffff,secondary:#ffffff">
+                    </lord-icon>
+                    Products
+                </a>
+            </li>
+            <li id="products" class="icon_hover">
+                <a href="/orders.html">
+                    <lord-icon src="https://cdn.lordicon.com/uisoczqi.json" colors="primary:#ffffff,secondary:#ffffff">
+                    </lord-icon>
+                    Orders
+                </a>
+            </li>
+            <li id="products" class="icon_hover">
+                <a href="/users.html">
+                    <lord-icon src="https://cdn.lordicon.com/fqbvgezn.json" colors="primary:#ffffff,secondary:#ffffff">
+                    </lord-icon>
+                    Users
+                </a>
+            </li>
+            <li id="products" class="icon_hover">
+                <a href="/settings.html">
+                    <lord-icon src="https://cdn.lordicon.com/fwkrbvja.json" colors="primary:#ffffff,secondary:#ffffff">
+                    </lord-icon>
+                    Settings
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+
+    <main>
+
+        <!-- navbar -->
+        <header>
+            <nav class="navbar">
+                <div class="navbar_left_box">
+                    <div class="drawer"><i class="fa-solid fa-table-columns"></i></div>
+                    <p>Welcome back, Admin</p>
+                </div>
+                <div class="navbar_right_box">
+                    <img class="avatar_img" src="assets/user-profile-dark.svg" alt="avatar">
+                </div>
+            </nav>
+        </header>
+
+        <!-- content -->
+        <section class="main_content">
+
+            <!-- users-content -->
+            <div class="app_content">
+
+                <div class="parent_holder">
+
+                    <div class="parent_container">
+
+                        <div class="row row_six row_header">
+                            <div>User</div>
+                            <div>Email</div>
+                            <div>Orders</div>
+                            <div>Joined</div>
+                            <div>Status</div>
+                            <div>Actions</div>
+                        </div>
+
+                        <div class="row_parent order_row_parent">
+
+                            <div class="row row_six">
+                                <div class="user_box boxes">Rahul</div>
+                                <div class="email_box boxes">rahul@gmail.com</div>
+                                <div class="orders_box boxes">12</div>
+                                <div class="joined_box boxes">Jan 2026</div>
+                                <div class="user_status_box boxes">Active</div>
+                                <div class="user_view_box boxes">
+                                    <button class="user_view_button view_btn">View</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script type="module" src="js/index.js"></script>
+</body>
+
+</html>
